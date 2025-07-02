@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBADULLAHI? Academy - Excellence in Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="books" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="2" height="8" x="10" y="20" fill="white" opacity="0.1"/><rect width="2" height="10" x="15" y="18" fill="white" opacity="0.1"/><rect width="2" height="7" x="20" y="21" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23books)"/></svg>');
+            animation: float 25s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(5px) translateY(-5px); }
+            50% { transform: translateX(-3px) translateY(3px); }
+            75% { transform: translateX(2px) translateY(-2px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #4f46e5;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Academics Grid */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .academic-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+        }
+
+        .academic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
+        }
+
+        .academic-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .academic-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .academic-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .grade-levels {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .grade-badge {
+            padding: 0.3rem 0.8rem;
+            background: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            margin: 5rem;
+            padding: 5rem 2rem;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Student Life */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(79, 70, 229, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            border-color: rgba(79, 70, 229, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Admissions Section */
+        .admissions {
+            background: #1e293b;
+            color: white;
+            margin: 5rem;
+            padding: 5rem 2rem;
+        }
+
+        .admissions-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .admissions-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admissions-text p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .admissions-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .admissions-steps li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .apply-button {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+        }
+
+        /* News Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.15);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .news-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .admissions-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .stats,
+            .admissions {
+                padding: 3rem 1rem;
+                margin: 0 -1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">IBADULLAHI</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#student-life">Student Life</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Excellence in Education</h1>
+            <p class="tagline">Empowering students to reach their full potential through innovative learning, dedicated teachers, and a nurturing environment where every child can thrive.</p>
+            <div class="hero-buttons">
+                <a href="#admissions" class="cta-button">Apply Now</a>
+                <a href="#academics" class="cta-button secondary">Explore Academics</a>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid fade-in">
+            <div class="stat-card">
+                <div class="stat-number">850+</div>
+                <div class="stat-label">Students Enrolled</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Graduation Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Dedicated Teachers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section id="academics">
+        <h2 class="section-title fade-in">Academic Excellence</h2>
+        <p class="section-subtitle fade-in">Our comprehensive curriculum is designed to challenge and inspire students at every level, preparing them for success in higher education and beyond.</p>
+        <div class="academics-grid">
+            <div class="academic-card fade-in">
+                <div class="academic-icon">📚</div>
+                <h3>Elementary Program</h3>
+                <p>Building strong foundations in literacy, numeracy, and critical thinking through engaging, hands-on learning experiences.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">K-5</span>
+                </div>
+            </div>
+            <div class="academic-card fade-in">
+                <div class="academic-icon">🔬</div>
+                <h3>Middle School</h3>
+                <p>Developing academic skills and personal growth through exploratory courses, advanced curriculum, and leadership opportunities.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">6-8</span>
+                </div>
+            </div>
+            <div class="academic-card fade-in">
+                <div class="academic-icon">🎓</div>
+                <h3>High School</h3>
+                <p>College-preparatory education with AP courses, dual enrollment options, and career pathway programs for every student's future.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">9-12</span>
+                    <span class="grade-badge">AP</span>
+                </div>
+            </div>
+            <div class="academic-card fade-in">
+                <div class="academic-icon">💻</div>
+                <h3>STEM Program</h3>
+                <p>Cutting-edge science, technology, engineering, and mathematics education with state-of-the-art labs and equipment.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">All Grades</span>
+                </div>
+            </div>
+            <div class="academic-card fade-in">
+                <div class="academic-icon">🎨</div>
+                <h3>Arts & Humanities</h3>
+                <p>Comprehensive arts education including visual arts, music, theater, and literature to develop creative expression.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">All Grades</span>
+                </div>
+            </div>
+            <div class="academic-card fade-in">
+                <div class="academic-icon">🌍</div>
+                <h3>Global Studies</h3>
+                <p>World languages, cultural studies, and international perspectives to prepare students for a global society.</p>
+                <div class="grade-levels">
+                    <span class="grade-badge">6-12</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Life Section -->
+    <section id="student-life">
+        <h2 class="section-title fade-in">Student Life</h2>
+        <p class="section-subtitle fade-in">Beyond academics, we offer a rich variety of activities and programs that help students discover their passions and develop leadership skills.</p>
+        <div class="activities-grid">
+            <div class="activity-card fade-in">
+                <div class="activity-icon">⚽</div>
+                <h3>Athletics</h3>
+                <p>Competitive sports teams and recreational activities promoting fitness, teamwork, and school spirit.</p>
+            </div>
+            <div class="activity-card fade-in">
+                <div class="activity-icon">🎭</div>
+                <h3>Performing Arts</h3>
+                <p>Drama club, school choir, band, and orchestra providing platforms for creative expression.</p>
+            </div>
+            <div class="activity-card fade-in">
+                <div class="activity-icon">🔬</div>
+                <h3>Science Club</h3>
+                <p>Science fairs, robotics competitions, and STEM challenges for aspiring innovators.</p>
+            </div>
+            <div class="activity-card fade-in">
+                <div class="activity-icon">📝</div>
+                <h3>Student Government</h3>
+                <p>Leadership opportunities through student council and various governance committees.</p>
+            </div>
+            <div class="activity-card fade-in">
+                <div class="activity-icon">🤝</div>
+                <h3>Community Service</h3>
+                <p>Volunteer programs and community outreach initiatives building character and citizenship.</p>
+            </div>
+            <div class="activity-card fade-in">
+                <div class="activity-icon">🏆</div>
+                <h3>Academic Competitions</h3>
+                <p>Math olympiad, debate team, and academic bowls challenging bright minds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="admissions">
+        <div class="admissions-content">
+            <div class="admissions-text fade-in">
+                <h2>Join Our Community</h2>
+                <p>We welcome students who are eager to learn, grow, and contribute to our vibrant school community. Our admissions process is designed to identify students who will thrive in our academic environment.</p>
+                <p>We believe every child deserves access to quality education, and we're committed to making Brightwood Academy accessible to families from all backgrounds.</p>
+                <ul class="admissions-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div>Submit online application and required documents</div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div>Schedule campus tour and student interview</div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div>Complete assessment and placement testing</div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div>Receive admission decision and enrollment information</div>
+                    </li>
+                </ul>
+                <a href="#contact" class="apply-button">Start Application</a>
+            </div>
+            <div class="admissions-steps fade-in">
+                <div class="contact-info">
+                    <h3 style="color: white; margin-bottom: 2rem;">Admissions Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📅</div>
+                        <div>
+                            <div style="color: #cbd5e1;"><strong>Application Deadline</strong></div>
+                            <div style="color: #cbd5e1;">February 15, 2025</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💰</div>
+                        <div>
+                            <div style="color: #cbd5e1;"><strong>Tuition & Fees</strong></div>
+                            <div style="color: #cbd5e1;">Starting at $12,000/year</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🎓</div>
+                        <div>
+                            <div style="color: #cbd5e1;"><strong>Financial Aid</strong></div>
+                            <div style="color: #cbd5e1;">Up to 75% assistance available</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📋</div>
+                        <div>
+                            <div style="color: #cbd5e1;"><strong>Grade Levels</strong></div>
+                            <div style="color: #cbd5e1;">Kindergarten through 12th Grade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <h2 class="section-title fade-in">Latest News & Events</h2>
+        <p class="section-subtitle fade-in">Stay updated with the latest happenings, achievements, and upcoming events at Brightwood Academy.</p>
+        <div class="news-grid">
+            <div class="news-card fade-in">
+                <div class="news-image">📰</div>
+                <div class="news-content">
+                    <div class="news-date">June 15, 2025</div>
+                    <h3 class="news-title">State Championship Victory</h3>
+                    <p class="news-excerpt">Our varsity basketball team brings home the state championship trophy after an incredible season of hard work and dedication.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image">🏆</div>
+                <div class="news-content">
+                    <div class="news-date">June 10, 2025</div>
+                    <h3 class="news-title">Science Fair Awards</h3>
+                    <p class="news-excerpt">Three Brightwood students receive top honors at the regional science fair with innovative projects in renewable energy and biotechnology.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-image">🎭</div>
+                <div class="news-content">
+                    <div class="news-date">June 5, 2025</div>
+                    <h3 class="news-title">Spring Musical Success</h3>
+                    <p class="news-excerpt">The drama department's production of "Into the Woods" receives standing ovations and sells out all five performances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title fade-in">Contact Us</h2>
+        <p class="section-subtitle fade-in">Ready to learn more about IBADULLAHI? We'd love to hear from you and answer any questions about our programs.</p>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3 style="margin-bottom: 2rem; color: #333;">Get in Touch</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div><strong>Address</strong></div>
+                        <div>45 Ajia's compound<br>offa,kwara,state</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <div><strong>Phone</strong></div>
+                        <div>081-403-109-42<br>Mon-Fri 8AM-5PM</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <div><strong>Email</strong></div>
+                        <div>Ibadullahi1111@gmail.com<br></div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🌐</div>
+                    <div>
+                        <div><strong>Office Hours</strong></div>
+                        <div>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form fade-in">
+                <h3 style="margin-bottom: 2rem; color: #333;">Send us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Parent/Guardian Name</label>
+                        <input type="text" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Student Grade Level</label>
+                        <select>
+                            <option value="">Select grade level</option>
+                            <option value="k">Kindergarten</option>
+                            <option value="1-5">Primary 1 </option>
+                            <option value="6-8">Primary 2 </option>
+                            <option value="9-12">Primary 3</option>
+                            <option value="9-12">Primary 4</option>
+                            <option value="9-12">Primary 5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Inquiry Type</label>
+                        <select>
+                            <option value="">How can we help?</option>
+                            <option value="admissions">Admissions Information</option>
+                            <option value="tour"></option>
+                            <option value="academics"></option>
+                            <option value="activities"></option>
+                            <option value="financial-aid"></option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" placeholder="Tell us about your questions or interests..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We\'ll get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.academic-card, .activity-card, .news-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Stats counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target >= 100 ? '%' : '+');
+            }, 20);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.stat-number');
+                    numbers.forEach(num => {
+                        const text = num.textContent;
+                        const target = parseInt(text.replace(/\D/g, ''));
+                        if (target && !num.dataset.animated) {
+                            num.dataset.animated = 'true';
+                            animateCounter(num, target);
+                        }
+                    });
+                }
+            });
+        });
+
+        document.querySelector('.stats').addEventListener('DOMContentLoaded', () => {
+            statsObserver.observe(document.querySelector('.stats'));
+        });
+
+        // Initialize stats observer
+        statsObserver.observe(document.querySelector('.stats'));
+    </script>
+</body>
+</html>
